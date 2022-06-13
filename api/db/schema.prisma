@@ -17,6 +17,12 @@ model Post {
   createdAt DateTime @default(now())
 }
 
+model AboutDetail {
+  id       Int    @id @default(sequence())
+  title    String
+  subtitle String
+}
+
 model Contact {
   id        Int      @id @default(sequence())
   name      String

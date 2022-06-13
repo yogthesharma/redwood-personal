@@ -8,17 +8,27 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Set, Private } from '@redwoodjs/router'
+import AboutDetailsLayout from 'src/layouts/AboutDetailsLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
 import BlogLayout from 'src/layouts/BlogLayout/BlogLayout'
 
 const Routes = () => {
   return (
     <Router>
+
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       {/* <Route path="/article" page={ArticlePage} name="article" /> */}
+      <Private unauthenticated='home' >
+        <Set wrap={AboutDetailsLayout}>
+          <Route path="/admin/about-details/new" page={AboutDetailNewAboutDetailPage} name="newAboutDetail" />
+          <Route path="/admin/about-details/{id:Int}/edit" page={AboutDetailEditAboutDetailPage} name="editAboutDetail" />
+          <Route path="/admin/about-details/{id:Int}" page={AboutDetailAboutDetailPage} name="aboutDetail" />
+          <Route path="/admin/about-details" page={AboutDetailAboutDetailsPage} name="aboutDetails" />
+        </Set>
+      </Private>
       <Private unauthenticated="home">
         <Set wrap={PostsLayout}>
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
@@ -39,3 +49,8 @@ const Routes = () => {
 }
 
 export default Routes
+
+
+// you have developed about page and homepage
+// things remaining
+// 1. Do some styling First

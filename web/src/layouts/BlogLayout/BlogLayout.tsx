@@ -5,12 +5,25 @@ type BlogLayoutProps = {
   children?: React.ReactNode
 }
 
+
+
 const BlogLayout = ({ children }: BlogLayoutProps) => {
   const { isAuthenticated, currentUser, logOut } = useAuth()
 
-  return <>
-    <header>
-      <div className="flex-between">
+  const routesVar = [{
+    name: "Home",
+    route: routes.home()
+  }, {
+    name: "About",
+    route: routes.about()
+  }, {
+    name: "Blog",
+    route: routes.home()
+  }]
+
+  return <div className="max-w-5xl w-full px-4 mx-auto">
+    <header className='py-4 flex align-middle justify-between'>
+      <div className="flex align-middle justify-between">
         <h1>
           <Link to={routes.home()}>Yog Sharma</Link>
         </h1> {isAuthenticated ? (
@@ -25,15 +38,15 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         )}
       </div>
       <nav>
-        <ul>
-          <li><Link to={routes.home()}>Home</Link></li>
-          <li><Link to={routes.about()}>About</Link></li>
-          <li><Link to={routes.contact()}>Contact</Link></li>
+        <ul className='flex'>
+          {routesVar.map(route => (
+            <li className='ml-10 text-blue-800 font-semibold'><Link to={route.route}>{route.name}</Link></li>
+          ))}
         </ul>
       </nav>
     </header>
     {children}
-  </>
+  </div>
 }
 
 export default BlogLayout
