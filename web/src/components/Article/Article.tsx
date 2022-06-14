@@ -4,18 +4,18 @@ import type { Post } from 'types/graphql'
 
 interface Props {
   article: Post
+  className?: string
 }
 
-const Article = ({ article }: Props) => {
+const Article = ({ article, className }: Props) => {
   return (
-    <article>
+    <article className={className}>
       <header>
-        <h2>
-          <Link to={routes.article({ id: article.id })}>{article.title}</Link>
-        </h2>
+        <Link to={routes.blog({ id: article.id })}>
+          <h2 className="font-semibold text-2xl">{article.title}</h2>
+          <p>{article.subtitle}</p>
+        </Link>
       </header>
-      <div>{article.body}</div>
-      <div>Posted at: {article.createdAt}</div>
     </article>
   )
 }

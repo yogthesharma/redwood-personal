@@ -7,7 +7,7 @@ import { Link, routes } from '@redwoodjs/router'
 import { QUERY } from 'src/components/AboutDetail/AboutDetailsCell'
 
 const DELETE_ABOUT_DETAIL_MUTATION = gql`
-  mutation DeleteAboutDetailMutation($id: Int!) {
+  mutation DeleteAboutDetailMutation($id: String!) {
     deleteAboutDetail(id: $id) {
       id
     }

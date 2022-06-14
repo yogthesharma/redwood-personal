@@ -1,8 +1,8 @@
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
-import Article from '../Article/Article'
+import SingleArticle from '../SingleArticle/SingleArticle'
 
 export const QUERY = gql`
-  query FindArticleQuery($id: Int!) {
+  query FindArticleQuery($id: String!) {
     article: post(id: $id) {
       id
       title
@@ -26,5 +26,5 @@ export const Failure = ({
 export const Success = ({
   article,
 }: CellSuccessProps) => {
-  return <Article article={article} />
+  return <SingleArticle article={article} />
 }

@@ -9,7 +9,7 @@ generator client {
 }
 
 model Post {
-  id        Int      @id @default(sequence())
+  id        String   @id @default(uuid())
   title     String
   subtitle  String
   body      String
@@ -18,13 +18,20 @@ model Post {
 }
 
 model AboutDetail {
-  id       Int    @id @default(sequence())
+  id       String @id @default(uuid())
+  title    String
+  subtitle String
+
+}
+
+model HomeDetail {
+  id       String @id @default(uuid())
   title    String
   subtitle String
 }
 
 model Contact {
-  id        Int      @id @default(sequence())
+  id        String   @id @default(uuid())
   name      String
   email     String
   message   String
@@ -32,7 +39,7 @@ model Contact {
 }
 
 model User {
-  id                  Int       @id @default(sequence())
+  id                  String    @id @default(uuid())
   name                String?
   email               String    @unique
   hashedPassword      String

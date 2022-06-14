@@ -25,6 +25,6 @@ export const Failure = ({ error }: CellFailureProps) => (
 
 export const Success = ({ articles }: CellSuccessProps) => {
   return articles.map((article) => (
-    <Article key={article.id} article={article} />
+    <Article className='mt-8' key={article.id} article={article} />
   ))
 }

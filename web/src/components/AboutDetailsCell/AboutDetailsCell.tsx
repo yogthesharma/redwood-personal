@@ -22,8 +22,8 @@ export const Success = ({ aboutDetails }: CellSuccessProps) => {
   const about = aboutDetails[0]
   return (
     <>
-      <h1>{about.title}</h1>
-      <p>{about.subtitle}</p>
+      <h1 className="text-2xl font-semibold">{about.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: about.subtitle }} />
     </>
   )
 }

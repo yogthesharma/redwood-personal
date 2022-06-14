@@ -8,7 +8,7 @@ import { navigate, routes } from '@redwoodjs/router'
 import AboutDetailForm from 'src/components/AboutDetail/AboutDetailForm'
 
 export const QUERY = gql`
-  query EditAboutDetailById($id: Int!) {
+  query EditAboutDetailById($id: String!) {
     aboutDetail: aboutDetail(id: $id) {
       id
       title
@@ -17,7 +17,7 @@ export const QUERY = gql`
   }
 `
 const UPDATE_ABOUT_DETAIL_MUTATION = gql`
-  mutation UpdateAboutDetailMutation($id: Int!, $input: UpdateAboutDetailInput!) {
+  mutation UpdateAboutDetailMutation($id: String!, $input: UpdateAboutDetailInput!) {
     updateAboutDetail(id: $id, input: $input) {
       id
       title

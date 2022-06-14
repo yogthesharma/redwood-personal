@@ -5,7 +5,7 @@ import { toast } from '@redwoodjs/web/toast'
 import { Link, routes, navigate } from '@redwoodjs/router'
 
 const DELETE_ABOUT_DETAIL_MUTATION = gql`
-  mutation DeleteAboutDetailMutation($id: Int!) {
+  mutation DeleteAboutDetailMutation($id: String!) {
     deleteAboutDetail(id: $id) {
       id
     }

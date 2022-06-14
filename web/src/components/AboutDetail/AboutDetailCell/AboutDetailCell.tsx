@@ -4,7 +4,7 @@ import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import AboutDetail from 'src/components/AboutDetail/AboutDetail'
 
 export const QUERY = gql`
-  query FindAboutDetailById($id: Int!) {
+  query FindAboutDetailById($id: String!) {
     aboutDetail: aboutDetail(id: $id) {
       id
       title

@@ -1,13 +1,13 @@
 export const schema = gql`
   type AboutDetail {
-    id: Int!
+    id: String!
     title: String!
     subtitle: String!
   }
 
   type Query {
     aboutDetails: [AboutDetail!]! @skipAuth
-    aboutDetail(id: Int!): AboutDetail @skipAuth
+    aboutDetail(id: String!): AboutDetail @skipAuth
   }
 
   input CreateAboutDetailInput {
@@ -22,8 +22,8 @@ export const schema = gql`
 
   type Mutation {
     createAboutDetail(input: CreateAboutDetailInput!): AboutDetail! @requireAuth
-    updateAboutDetail(id: Int!, input: UpdateAboutDetailInput!): AboutDetail!
+    updateAboutDetail(id: String!, input: UpdateAboutDetailInput!): AboutDetail!
       @requireAuth
-    deleteAboutDetail(id: Int!): AboutDetail! @requireAuth
+    deleteAboutDetail(id: String!): AboutDetail! @requireAuth
   }
 `
