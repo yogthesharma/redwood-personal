@@ -8,6 +8,8 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Set, Private } from '@redwoodjs/router'
+import TimelinesLayout from 'src/layouts/TimelinesLayout'
+import HomeDetailsLayout from 'src/layouts/HomeDetailsLayout'
 import AboutDetailsLayout from 'src/layouts/AboutDetailsLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
 import BlogLayout from 'src/layouts/BlogLayout/BlogLayout'
@@ -15,12 +17,29 @@ import BlogLayout from 'src/layouts/BlogLayout/BlogLayout'
 const Routes = () => {
   return (
     <Router>
+
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       {/* <Route path="/article" page={ArticlePage} name="article" /> */}
-      <Private unauthenticated='home' >
+      <Private unauthenticated="home">
+        <Set wrap={TimelinesLayout}>
+          <Route path="/admin/timelines/new" page={TimelineNewTimelinePage} name="newTimeline" />
+          <Route path="/admin/timelines/{id}/edit" page={TimelineEditTimelinePage} name="editTimeline" />
+          <Route path="/admin/timelines/{id}" page={TimelineTimelinePage} name="timeline" />
+          <Route path="/admin/timelines" page={TimelineTimelinesPage} name="timelines" />
+        </Set>
+      </Private>
+      <Private unauthenticated="home">
+        <Set wrap={HomeDetailsLayout}>
+          <Route path="/admin/home-details/new" page={HomeDetailNewHomeDetailPage} name="newHomeDetail" />
+          <Route path="/admin/home-details/{id}/edit" page={HomeDetailEditHomeDetailPage} name="editHomeDetail" />
+          <Route path="/admin/home-details/{id}" page={HomeDetailHomeDetailPage} name="homeDetail" />
+          <Route path="/admin/home-details" page={HomeDetailHomeDetailsPage} name="homeDetails" />
+        </Set>
+      </Private>
+      <Private unauthenticated="home">
         <Set wrap={AboutDetailsLayout}>
           <Route path="/admin/about-details/new" page={AboutDetailNewAboutDetailPage} name="newAboutDetail" />
           <Route path="/admin/about-details/{id:String}/edit" page={AboutDetailEditAboutDetailPage} name="editAboutDetail" />
@@ -50,7 +69,5 @@ const Routes = () => {
 
 export default Routes
 
-
-// you have developed about page and homepage
-// things remaining
-// 1. Do some styling First
+// 1. generate section ro show timeline
+// 2. start styling

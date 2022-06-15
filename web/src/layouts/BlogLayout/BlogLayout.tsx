@@ -9,20 +9,33 @@ type BlogLayoutProps = {
 const BlogLayout = ({ children }: BlogLayoutProps) => {
   const [currSong, setCurrSong] = useState<string>('')
   const { isAuthenticated, currentUser, logOut } = useAuth()
-  const routesVar = [
-    {
-      name: 'Home',
-      route: routes.home(),
-    },
-    {
-      name: 'About',
-      route: routes.about(),
-    },
-    {
-      name: 'Blog',
-      route: routes.blogs(),
-    },
-  ]
+  const routesVar = () => {
+    const publicRoutes = [
+      {
+        name: 'Home',
+        route: routes.home(),
+      },
+      {
+        name: 'About',
+        route: routes.about(),
+      },
+      {
+        name: 'Blog',
+        route: routes.blogs(),
+      },
+    ]
+    const privateRoutes = [
+      { name: 'Post', route: routes.posts() },
+      {
+        name: 'About Details',
+        route: routes.aboutDetails(),
+      },
+    ]
+    if (isAuthenticated) {
+      return [...publicRoutes, ...privateRoutes]
+    }
+    return [...publicRoutes]
+  }
 
   const getSpotifyCurrentSong = useCallback(async () => {
     const res = await fetch(
@@ -32,7 +45,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           Authorization:
-            'Bearer BQCq4H_S0XnkSX-1_pgU7zJjv0nLeKQnZAOjiq6Am3-ZpFpzH9hiwOEL2-RObRdTWGa6Upkx3EqP-gM0yVomLJOa_zq_-hYVPgiaBt_L68SQE0gfWx-hBcLjUCdvOplwwwqepDuoR6vuW_v12bWhe-t-3sgVJKfns7rIYYf0UJ1PFyJ9nv_dtydAYRcnJjJrVBdK0FXmRA',
+            'Bearer BQB5pATlbEPxYjyaGnucwOIKcTsAf0oc2yTqlHsADzdxJFFI3-qkiHi77jCzvwn-W228gmLlpThUbbl_7kgTdgPd55UYZecTge3Ilfy_xMypPHTKbmHi2HKDnHO26ROn49qPf0V7umJEt98ayBKPNybqpUNyTP4qNA4GAzp4RsQPErd1r9whOURyZcnAb0hmXxgFUITcoA',
         },
       }
     )
@@ -49,12 +62,9 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
     <div className="max-w-5xl w-full px-4 mx-auto">
       <header className="py-4 flex align-middle justify-between">
         <div className="flex align-middle justify-between">
-          <h1>
-            <Link to={routes.home()}>Yog Sharma</Link>
-          </h1>{' '}
           {isAuthenticated ? (
             <div>
-              <span>Logged in as {currentUser.email}</span>{' '}
+              <span>Logged in as {currentUser?.email}</span>{' '}
               <button type="button" onClick={logOut}>
                 Logout
               </button>
@@ -65,8 +75,11 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         </div>
         <nav>
           <ul className="flex">
-            {routesVar.map((route) => (
-              <li key={route.name} className="ml-10 text-blue-800 font-semibold">
+            {routesVar().map((route) => (
+              <li
+                key={route.name}
+                className="ml-10 text-blue-800 font-semibold"
+              >
                 <Link to={route.route}>{route.name}</Link>
               </li>
             ))}

@@ -1,13 +1,13 @@
-import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-
-import ArticlesCell from 'src/components/ArticlesCell'
+import HomeDetailCell  from 'src/components/HomeDetailsCell'
+import RecentPostsCell from "src/components/RecentPostsCell"
 
 const HomePage = () => {
   return (
     <>
       <MetaTags title="Home" description="Home page" />
-      this is HomePage
+      <HomeDetailCell />
+      <RecentPostsCell />
     </>
   )
 }

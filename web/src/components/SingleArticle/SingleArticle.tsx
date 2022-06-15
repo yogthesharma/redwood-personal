@@ -41,7 +41,7 @@ const SingleArticle = ({ article }: Props) => {
       <h2 className="text-3xl font-semibold">{title}</h2>
       <span>{timeCalculate()}</span>
       <p>{subtitle}</p>
-      <img src={image} />
+      <img width={100} height={100} src={image} alt={image} />
       <div dangerouslySetInnerHTML={{ __html: body }}></div>
     </div>
   )

@@ -8,7 +8,9 @@ export const schema = gql`
     createdAt: DateTime!
   }
 
+
   type Query {
+    recentPosts: [Post!]! @skipAuth
     posts: [Post!]! @skipAuth
     post(id: String!): Post @skipAuth
   }

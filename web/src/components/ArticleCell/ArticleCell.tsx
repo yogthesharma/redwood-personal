@@ -9,6 +9,7 @@ export const QUERY = gql`
       subtitle
       body
       createdAt
+      image
     }
   }
 `

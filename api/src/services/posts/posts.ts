@@ -5,6 +5,10 @@ export const posts: QueryResolvers['posts'] = () => {
   return db.post.findMany()
 }
 
+export const recentPosts = () => {
+  return db.post.findMany({ take: 3 })
+}
+
 export const post: QueryResolvers['post'] = ({ id }) => {
   return db.post.findUnique({
     where: { id },
