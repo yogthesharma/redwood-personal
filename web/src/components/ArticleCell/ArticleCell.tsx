@@ -10,6 +10,8 @@ export const QUERY = gql`
       body
       createdAt
       image
+      author
+      tags
     }
   }
 `

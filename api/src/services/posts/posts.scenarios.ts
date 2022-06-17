@@ -8,6 +8,8 @@ export const standard = defineScenario<Prisma.PostCreateArgs>({
         subtitle: 'String',
         body: 'String',
         image: 'String',
+        tags: 'String',
+        author: 'Yog_Sharma',
       },
     },
     two: {
@@ -16,6 +18,8 @@ export const standard = defineScenario<Prisma.PostCreateArgs>({
         subtitle: 'String',
         body: 'String',
         image: 'String',
+        tags: 'String',
+        author: 'Yog_Sharma',
       },
     },
   },

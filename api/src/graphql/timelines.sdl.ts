@@ -25,8 +25,8 @@ export const schema = gql`
   }
 
   type Query {
-    timelines: [Timeline!]! @requireAuth
-    timeline(id: String!): Timeline @requireAuth
+    timelines: [Timeline!]! @skipAuth
+    timeline(id: String!): Timeline @skipAuth
   }
 
   input CreateTimelineInput {

@@ -1,13 +1,16 @@
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import Article from '../Article/Article'
 
-
 export const QUERY = gql`
   query RecentPostsQuery {
     recentPosts {
       id
       subtitle
       title
+      image
+      tags
+      author
+      createdAt
     }
   }
 `
@@ -21,7 +24,12 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ recentPosts }: CellSuccessProps) => {
-  return recentPosts.map((article) => (
-    <Article className='mt-8' key={article.id} article={article} />
-  ))
+  return (
+    <main>
+      <div className='lg:mt-10 text-5xl font-semibold text-red-500'>Recent Blogs</div>
+      {recentPosts.map((article) => (
+        <Article className="mt-4" key={article.id} article={article} />
+      ))}
+    </main>
+  )
 }

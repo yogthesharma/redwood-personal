@@ -27,6 +27,8 @@ describe('posts', () => {
         subtitle: 'String',
         body: 'String',
         image: 'String',
+        tags: 'String',
+        author: 'Yog_Sharma',
       },
     })
 
@@ -34,6 +36,8 @@ describe('posts', () => {
     expect(result.subtitle).toEqual('String')
     expect(result.body).toEqual('String')
     expect(result.image).toEqual('String')
+    expect(result.tags).toEqual('String')
+    expect(result.author).toEqual('Yog_Sharma')
   })
 
   scenario('updates a post', async (scenario: StandardScenario) => {

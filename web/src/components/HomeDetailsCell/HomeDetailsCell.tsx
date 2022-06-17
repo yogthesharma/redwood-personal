@@ -22,15 +22,13 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({
   homeDetails,
 }: CellSuccessProps) => {
-  const { id, title, subtitle } = homeDetails[0]
+  const { title, subtitle } = homeDetails[0]
   return (
-    <>
     <div>
-      <h1 className='text-5xl'>
+      <h1 className='lg:text-6xl font-bold'>
         {title}
       </h1>
-      <p>{subtitle}</p>
+      <p className='lg:mt-4 text-lg'>{subtitle}</p>
     </div>
-    </>
   )
 }

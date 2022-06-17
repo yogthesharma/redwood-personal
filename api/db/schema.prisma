@@ -8,12 +8,18 @@ generator client {
   binaryTargets = "native"
 }
 
+enum author {
+  Yog_Sharma
+}
+
 model Post {
   id        String   @id @default(uuid())
   title     String
   subtitle  String
   body      String
   image     String
+  tags      String
+  author    author
   createdAt DateTime @default(now())
 }
 

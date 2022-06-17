@@ -22,7 +22,7 @@ const Routes = () => {
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
-      {/* <Route path="/article" page={ArticlePage} name="article" /> */}
+
       <Private unauthenticated="home">
         <Set wrap={TimelinesLayout}>
           <Route path="/admin/timelines/new" page={TimelineNewTimelinePage} name="newTimeline" />
@@ -31,6 +31,7 @@ const Routes = () => {
           <Route path="/admin/timelines" page={TimelineTimelinesPage} name="timelines" />
         </Set>
       </Private>
+
       <Private unauthenticated="home">
         <Set wrap={HomeDetailsLayout}>
           <Route path="/admin/home-details/new" page={HomeDetailNewHomeDetailPage} name="newHomeDetail" />
@@ -39,6 +40,7 @@ const Routes = () => {
           <Route path="/admin/home-details" page={HomeDetailHomeDetailsPage} name="homeDetails" />
         </Set>
       </Private>
+
       <Private unauthenticated="home">
         <Set wrap={AboutDetailsLayout}>
           <Route path="/admin/about-details/new" page={AboutDetailNewAboutDetailPage} name="newAboutDetail" />
@@ -47,6 +49,7 @@ const Routes = () => {
           <Route path="/admin/about-details" page={AboutDetailAboutDetailsPage} name="aboutDetails" />
         </Set>
       </Private>
+
       <Private unauthenticated="home">
         <Set wrap={PostsLayout}>
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
@@ -55,6 +58,7 @@ const Routes = () => {
           <Route path="/admin/posts" page={PostPostsPage} name="posts" />
         </Set>
       </Private>
+
       <Set wrap={BlogLayout}>
         <Route path="/blogs" page={BlogsPage} name="blogs" />
         <Route path="/contact" page={ContactPage} name="contact" />
@@ -69,5 +73,3 @@ const Routes = () => {
 
 export default Routes
 
-// 1. generate section ro show timeline
-// 2. start styling

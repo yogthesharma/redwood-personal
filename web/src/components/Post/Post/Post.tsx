@@ -86,6 +86,12 @@ const Post = ({ post }) => {
               <th>Image</th>
               <td>{post.image}</td>
             </tr><tr>
+              <th>Tags</th>
+              <td>{post.tags}</td>
+            </tr><tr>
+              <th>Author</th>
+              <td>{formatEnum(post.author)}</td>
+            </tr><tr>
               <th>Created at</th>
               <td>{timeTag(post.createdAt)}</td>
             </tr>

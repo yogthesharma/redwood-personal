@@ -5,9 +5,14 @@ export const schema = gql`
     subtitle: String!
     body: String!
     image: String!
+    tags: String!
+    author: author!
     createdAt: DateTime!
   }
 
+  enum author {
+    Yog_Sharma
+  }
 
   type Query {
     recentPosts: [Post!]! @skipAuth
@@ -20,6 +25,8 @@ export const schema = gql`
     subtitle: String!
     body: String!
     image: String!
+    tags: String!
+    author: author!
   }
 
   input UpdatePostInput {
@@ -27,6 +34,8 @@ export const schema = gql`
     subtitle: String
     body: String
     image: String
+    tags: String
+    author: author
   }
 
   type Mutation {

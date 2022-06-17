@@ -5,7 +5,7 @@ export const posts: QueryResolvers['posts'] = () => {
   return db.post.findMany()
 }
 
-export const recentPosts = () => {
+export const recentPosts: QueryResolvers['posts'] = () => {
   return db.post.findMany({ take: 3 })
 }
 
@@ -33,3 +33,4 @@ export const deletePost: MutationResolvers['deletePost'] = ({ id }) => {
     where: { id },
   })
 }
+

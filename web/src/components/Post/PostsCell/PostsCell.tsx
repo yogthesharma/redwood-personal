@@ -13,6 +13,8 @@ export const QUERY = gql`
       subtitle
       body
       image
+      tags
+      author
       createdAt
     }
   }

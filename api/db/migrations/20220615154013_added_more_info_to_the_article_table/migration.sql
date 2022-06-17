@@ -1,3 +1,9 @@
+-- CreateEnum
+CREATE TYPE "author" AS ENUM ('Yog_Sharma');
+
+-- CreateEnum
+CREATE TYPE "years" AS ENUM ('y2021', 'y2020', 'y2018', 'y2022', 'y2016', 'y2011', 'y2000', 'y2023', 'y2024', 'y2025', 'y2026', 'y2027', 'y2028', 'y2029', 'y2030');
+
 -- CreateTable
 CREATE TABLE "Post" (
     "id" STRING NOT NULL,
@@ -5,6 +11,8 @@ CREATE TABLE "Post" (
     "subtitle" STRING NOT NULL,
     "body" STRING NOT NULL,
     "image" STRING NOT NULL,
+    "tags" STRING NOT NULL,
+    "author" "author" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
@@ -52,5 +60,18 @@ CREATE TABLE "User" (
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "Timeline" (
+    "id" STRING NOT NULL,
+    "title" STRING NOT NULL,
+    "subtitle" STRING NOT NULL,
+    "year" "years" NOT NULL,
+
+    CONSTRAINT "Timeline_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Timeline_id_key" ON "Timeline"("id");

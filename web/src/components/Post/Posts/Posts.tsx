@@ -84,6 +84,8 @@ const PostsList = ({ posts }) => {
             <th>Subtitle</th>
             <th>Body</th>
             <th>Image</th>
+            <th>Tags</th>
+            <th>Author</th>
             <th>Created at</th>
             <th>&nbsp;</th>
           </tr>
@@ -96,6 +98,8 @@ const PostsList = ({ posts }) => {
               <td>{truncate(post.subtitle)}</td>
               <td>{truncate(post.body)}</td>
               <td>{truncate(post.image)}</td>
+              <td>{truncate(post.tags)}</td>
+              <td>{formatEnum(post.author)}</td>
               <td>{timeTag(post.createdAt)}</td>
               <td>
                 <nav className="rw-table-actions">

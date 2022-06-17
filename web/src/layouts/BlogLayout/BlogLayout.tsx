@@ -1,5 +1,5 @@
 import { useAuth } from '@redwoodjs/auth'
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes, NavLink } from '@redwoodjs/router'
 import { useCallback, useEffect, useState } from 'react'
 
 type BlogLayoutProps = {
@@ -30,6 +30,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         name: 'About Details',
         route: routes.aboutDetails(),
       },
+      { name: 'Timeline', route: routes.timelines() },
     ]
     if (isAuthenticated) {
       return [...publicRoutes, ...privateRoutes]
@@ -59,7 +60,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
   }, [getSpotifyCurrentSong])
 
   return (
-    <div className="max-w-5xl w-full px-4 mx-auto">
+    <div className="max-w-5xl w-full py-2 px-4 mx-auto">
       <header className="py-4 flex align-middle justify-between">
         <div className="flex align-middle justify-between">
           {isAuthenticated ? (
@@ -78,9 +79,15 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
             {routesVar().map((route) => (
               <li
                 key={route.name}
-                className="ml-10 text-blue-800 font-semibold"
+                className="ml-10 text-blue-800 font-medium"
               >
-                <Link to={route.route}>{route.name}</Link>
+                <NavLink
+                  className="text-white-500 transition-colors hover:text-red-100"
+                  activeClassName="text-red-600 hover:text-red-600"
+                  to={route.route}
+                >
+                  {route.name}
+                </NavLink>
               </li>
             ))}
           </ul>

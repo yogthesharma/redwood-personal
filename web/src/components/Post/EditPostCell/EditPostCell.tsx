@@ -15,6 +15,8 @@ export const QUERY = gql`
       subtitle
       body
       image
+      tags
+      author
       createdAt
     }
   }
@@ -27,6 +29,8 @@ const UPDATE_POST_MUTATION = gql`
       subtitle
       body
       image
+      tags
+      author
       createdAt
     }
   }

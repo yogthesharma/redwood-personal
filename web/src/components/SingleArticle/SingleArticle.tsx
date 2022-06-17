@@ -1,5 +1,7 @@
-import { useCallback } from "react"
-import { Post } from "types/graphql"
+import { useCallback } from 'react'
+import { Post } from 'types/graphql'
+
+import styles from "./index.module.scss"
 
 interface Props {
   article: Post
@@ -10,9 +12,11 @@ const SingleArticle = ({ article }: Props) => {
 
   const timeCalculate = useCallback(() => {
     const currDate = new Date()
-    const diffTime = Math.abs(currDate.getTime() - new Date(createdAt).getTime())
+    const diffTime = Math.abs(
+      currDate.getTime() - new Date(createdAt).getTime()
+    )
     const differentTimes = {
-      seconds: diffTime / (1000),
+      seconds: diffTime / 1000,
       minutes: diffTime / (1000 * 60),
       hours: diffTime / (1000 * 60 * 60),
       days: diffTime / (1000 * 60 * 60 * 24),
@@ -33,16 +37,20 @@ const SingleArticle = ({ article }: Props) => {
     if (differentTimes.months < 1) {
       return `${Math.ceil(differentTimes.months)} month(s) ago`
     }
-    return "Publish time unknown"
+    return 'Publish time unknown'
   }, [createdAt])
 
   return (
-    <div>
-      <h2 className="text-3xl font-semibold">{title}</h2>
-      <span>{timeCalculate()}</span>
-      <p>{subtitle}</p>
-      <img width={100} height={100} src={image} alt={image} />
-      <div dangerouslySetInnerHTML={{ __html: body }}></div>
+    <div className="mt-10">
+      <h2 className="text-5xl font-semibold text-red-500">{title}</h2>
+      <div className="flex text-sm mt-4 my-2 text-gray-400">
+        <p>{article.author.replace('_', ' ')}</p>
+        <p className="mx-2">&#x007C;</p>
+        <p>{timeCalculate()}</p>
+      </div>
+      <p className='font-light text-white-500'>{subtitle}</p>
+      <img className="w-full my-10" src={image} alt={image} />
+      <div className={`${styles.blogStyling} text-white-300 font-extralight text-justify`} dangerouslySetInnerHTML={{ __html: body }}></div>
     </div>
   )
 }

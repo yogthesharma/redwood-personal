@@ -4,6 +4,7 @@ import {
   FieldError,
   Label,
   TextField,
+  RadioField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -12,6 +13,12 @@ import {
 const PostForm = (props) => {
   const onSubmit = (data) => {
 
+  
+    
+    
+  
+    
+    
   
     
     
@@ -113,6 +120,53 @@ const PostForm = (props) => {
         
 
         <FieldError name="image" className="rw-field-error" />
+
+        <Label
+          name="tags"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Tags
+        </Label>
+        
+          <TextField
+            name="tags"
+            defaultValue={props.post?.tags}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            validation={{ required: true }}
+          />
+        
+
+        <FieldError name="tags" className="rw-field-error" />
+
+        <Label
+          name="author"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Author
+        </Label>
+        
+          
+          
+        <div className="rw-check-radio-items">
+          <RadioField
+            id="post-author-0"
+            name="author"
+            defaultValue="Yog_Sharma"
+            defaultChecked={props.post?.author?.includes('Yog_Sharma')}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+          <div>
+            Yog Sharma
+          </div>
+        </div>
+          
+        
+
+        <FieldError name="author" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit
