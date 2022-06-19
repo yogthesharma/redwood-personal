@@ -6,6 +6,7 @@ import {
   TextField,
   RadioField,
   Submit,
+  TextAreaField,
 } from '@redwoodjs/forms'
 
 
@@ -13,25 +14,25 @@ import {
 const PostForm = (props) => {
   const onSubmit = (data) => {
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     props.onSave(data, props?.post?.id)
   }
 
@@ -44,7 +45,7 @@ const PostForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-      
+
         <Label
           name="title"
           className="rw-label"
@@ -52,7 +53,7 @@ const PostForm = (props) => {
         >
           Title
         </Label>
-        
+
           <TextField
             name="title"
             defaultValue={props.post?.title}
@@ -60,7 +61,7 @@ const PostForm = (props) => {
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-        
+
 
         <FieldError name="title" className="rw-field-error" />
 
@@ -71,7 +72,7 @@ const PostForm = (props) => {
         >
           Subtitle
         </Label>
-        
+
           <TextField
             name="subtitle"
             defaultValue={props.post?.subtitle}
@@ -79,7 +80,7 @@ const PostForm = (props) => {
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-        
+
 
         <FieldError name="subtitle" className="rw-field-error" />
 
@@ -90,15 +91,15 @@ const PostForm = (props) => {
         >
           Body
         </Label>
-        
-          <TextField
+
+        <TextAreaField
             name="body"
             defaultValue={props.post?.body}
             className="rw-input"
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-        
+
 
         <FieldError name="body" className="rw-field-error" />
 
@@ -109,7 +110,7 @@ const PostForm = (props) => {
         >
           Image
         </Label>
-        
+
           <TextField
             name="image"
             defaultValue={props.post?.image}
@@ -117,7 +118,7 @@ const PostForm = (props) => {
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-        
+
 
         <FieldError name="image" className="rw-field-error" />
 
@@ -128,7 +129,7 @@ const PostForm = (props) => {
         >
           Tags
         </Label>
-        
+
           <TextField
             name="tags"
             defaultValue={props.post?.tags}
@@ -136,7 +137,7 @@ const PostForm = (props) => {
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-        
+
 
         <FieldError name="tags" className="rw-field-error" />
 
@@ -147,9 +148,9 @@ const PostForm = (props) => {
         >
           Author
         </Label>
-        
-          
-          
+
+
+
         <div className="rw-check-radio-items">
           <RadioField
             id="post-author-0"
@@ -163,8 +164,8 @@ const PostForm = (props) => {
             Yog Sharma
           </div>
         </div>
-          
-        
+
+
 
         <FieldError name="author" className="rw-field-error" />
 

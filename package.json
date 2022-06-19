@@ -23,6 +23,7 @@
   },
   "packageManager": "yarn@3.2.1",
   "dependencies": {
-    "@mui/icons-material": "^5.8.4"
+    "@mui/icons-material": "^5.8.4",
+    "markdown-to-jsx": "^7.1.7"
   }
 }

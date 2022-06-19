@@ -26,7 +26,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ recentPosts }: CellSuccessProps) => {
   return (
     <main>
-      <div className='lg:mt-10 text-5xl font-semibold text-red-500'>Recent Blogs</div>
+      <div className='lg:mt-14 text-3xl font-normal text-red-500'>Recent Blogs</div>
       {recentPosts.map((article) => (
         <Article className="mt-4" key={article.id} article={article} />
       ))}

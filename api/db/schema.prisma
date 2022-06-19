@@ -27,7 +27,12 @@ model AboutDetail {
   id       String @id @default(uuid())
   title    String
   subtitle String
+}
 
+model BlogDetail {
+  id       String @id @default(uuid())
+  title    String
+  subtitle String
 }
 
 model HomeDetail {

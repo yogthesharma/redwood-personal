@@ -5,22 +5,21 @@ import {
   Label,
   TextField,
   Submit,
-  TextAreaField,
 } from '@redwoodjs/forms'
 
 
 
-const AboutDetailForm = (props) => {
+const BlogDetailForm = (props) => {
   const onSubmit = (data) => {
 
-
-
-
-
-
-
-
-    props.onSave(data, props?.aboutDetail?.id)
+  
+    
+    
+  
+    
+    
+  
+    props.onSave(data, props?.blogDetail?.id)
   }
 
   return (
@@ -32,7 +31,7 @@ const AboutDetailForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-
+      
         <Label
           name="title"
           className="rw-label"
@@ -40,15 +39,15 @@ const AboutDetailForm = (props) => {
         >
           Title
         </Label>
-
+        
           <TextField
             name="title"
-            defaultValue={props.aboutDetail?.title}
+            defaultValue={props.blogDetail?.title}
             className="rw-input"
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-
+        
 
         <FieldError name="title" className="rw-field-error" />
 
@@ -59,15 +58,15 @@ const AboutDetailForm = (props) => {
         >
           Subtitle
         </Label>
-
-        <TextAreaField
+        
+          <TextField
             name="subtitle"
-            defaultValue={props.aboutDetail?.subtitle}
+            defaultValue={props.blogDetail?.subtitle}
             className="rw-input"
             errorClassName="rw-input rw-input-error"
             validation={{ required: true }}
           />
-
+        
 
         <FieldError name="subtitle" className="rw-field-error" />
 
@@ -84,4 +83,4 @@ const AboutDetailForm = (props) => {
   )
 }
 
-export default AboutDetailForm
+export default BlogDetailForm

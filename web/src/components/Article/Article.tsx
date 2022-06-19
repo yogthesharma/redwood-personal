@@ -19,12 +19,12 @@ const Article = ({ article, className }: Props) => {
             <main className="lg:w-3/4 pr-4">
               <div className="lg: inline-block ml-auto">
                 {tagsArr.map((tag) => (
-                  <span className="p-1 px-2 bg-black-100 rounded-md text-xs text-white-900">
+                  <span className="p-1 px-2 bg-black-100 rounded-md text-xs mr-2 text-white-900">
                     {tag}
                   </span>
                 ))}
               </div>
-              <h2 className="lg:font-medium text-2xl mt-2">
+              <h2 title={article.title} className="lg:font-medium text-2xl mt-2 truncate">
                 {article.title}
               </h2>
               <div className="flex text-sm mt-2 text-gray-400">

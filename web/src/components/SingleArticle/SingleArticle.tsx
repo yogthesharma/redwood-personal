@@ -1,7 +1,8 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { Post } from 'types/graphql'
+import { compiler } from 'markdown-to-jsx'
 
-import styles from "./index.module.scss"
+import styles from './index.module.scss'
 
 interface Props {
   article: Post
@@ -40,17 +41,25 @@ const SingleArticle = ({ article }: Props) => {
     return 'Publish time unknown'
   }, [createdAt])
 
+  const str = `${body}`
+  const blogData = useMemo(() => compiler(str), [body])
+  useEffect(() => {
+    console.log(body, blogData)
+  }, [])
+
   return (
     <div className="mt-10">
-      <h2 className="text-5xl font-semibold text-red-500">{title}</h2>
+      <h2 className="text-5xl font-bold text-red-500">{title}</h2>
       <div className="flex text-sm mt-4 my-2 text-gray-400">
         <p>{article.author.replace('_', ' ')}</p>
         <p className="mx-2">&#x007C;</p>
         <p>{timeCalculate()}</p>
       </div>
-      <p className='font-light text-white-500'>{subtitle}</p>
-      <img className="w-full my-10" src={image} alt={image} />
-      <div className={`${styles.blogStyling} text-white-300 font-extralight text-justify`} dangerouslySetInnerHTML={{ __html: body }}></div>
+      <p className="font-extralight text-white-500 text-xl">{subtitle}</p>
+      <img className="w-full my-4" src={image} alt={image} />
+      <div className={`${styles.blogData} text-white-400 font-light`}>
+        {blogData}
+      </div>
     </div>
   )
 }

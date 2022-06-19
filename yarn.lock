@@ -17010,6 +17010,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"markdown-to-jsx@npm:^7.1.7":
+  version: 7.1.7
+  resolution: "markdown-to-jsx@npm:7.1.7"
+  peerDependencies:
+    react: ">= 0.14.0"
+  checksum: 2473c94cebf93503bfc62662614c511b1e21893cbd7f2a4d64d77f186ae0d9febfabfe620a25dc4311e98eaaa3c1956d9139a0e4dd8636aaa83060aa7d5d89c5
+  languageName: node
+  linkType: hard
+
 "md5.js@npm:^1.3.4":
   version: 1.3.5
   resolution: "md5.js@npm:1.3.5"
@@ -20932,6 +20941,7 @@ __metadata:
   dependencies:
     "@mui/icons-material": ^5.8.4
     "@redwoodjs/core": 1.5.1
+    markdown-to-jsx: ^7.1.7
   languageName: unknown
   linkType: soft
 

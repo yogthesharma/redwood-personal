@@ -6,7 +6,8 @@ import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 import FatalErrorPage from 'src/pages/FatalErrorPage'
 import Routes from 'src/Routes'
 
-import './scaffold.scss'
+// import './scaffold.css'
+// import './scaffold.scss'
 import './index.scss'
 
 const App = () => (

@@ -1,6 +1,8 @@
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes, NavLink } from '@redwoodjs/router'
 import { useCallback, useEffect, useState } from 'react'
+import fetch from 'isomorphic-unfetch'
+import querystring from 'querystring'
 
 type BlogLayoutProps = {
   children?: React.ReactNode
@@ -38,21 +40,47 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
     return [...publicRoutes]
   }
 
-  const getSpotifyCurrentSong = useCallback(async () => {
-    const res = await fetch(
-      'https://api.spotify.com/v1/me/player/currently-playing',
-      {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization:
-            'Bearer BQB5pATlbEPxYjyaGnucwOIKcTsAf0oc2yTqlHsADzdxJFFI3-qkiHi77jCzvwn-W228gmLlpThUbbl_7kgTdgPd55UYZecTge3Ilfy_xMypPHTKbmHi2HKDnHO26ROn49qPf0V7umJEt98ayBKPNybqpUNyTP4qNA4GAzp4RsQPErd1r9whOURyZcnAb0hmXxgFUITcoA',
-        },
-      }
+  const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
+  const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
+
+  const getAccessToken = useCallback(async () => {
+    const {
+      SPOTIFY_CLIENT_ID: client_id,
+      SPOTIFY_CLIENT_SECRET: client_secret,
+      SPOTIFY_REFRESH_TOKEN: refresh_token,
+    } = process.env
+    const basic = Buffer.from(`${client_id}:${client_secret}`).toString(
+      'base64'
     )
-      .then((res) => res.json())
-      .catch((err) => console.error('Unable to load currently playing song'))
-    setCurrSong(res.item.name)
+    const response = await fetch(TOKEN_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${basic}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: querystring.stringify({
+        grant_type: 'refresh_token',
+        refresh_token,
+      }),
+    })
+
+    return response.json()
+  }, [])
+
+  const getNowPlaying = useCallback(async () => {
+    const { access_token } = await getAccessToken()
+
+    return fetch(NOW_PLAYING_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    })
+  }, [])
+
+  const getSpotifyCurrentSong = useCallback(async () => {
+    const res = await getNowPlaying()
+    console.log(res)
+    setCurrSong(res as unknown as string)
   }, [])
 
   useEffect(() => {
@@ -77,10 +105,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         <nav>
           <ul className="flex">
             {routesVar().map((route) => (
-              <li
-                key={route.name}
-                className="ml-10 text-blue-800 font-medium"
-              >
+              <li key={route.name} className="ml-10 text-blue-800 font-medium">
                 <NavLink
                   className="text-white-500 transition-colors hover:text-red-100"
                   activeClassName="text-red-600 hover:text-red-600"
